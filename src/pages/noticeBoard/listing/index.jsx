@@ -26,8 +26,8 @@ export default function NoticeBoardListing() {
       <PageHeaderWrapper>
         <BreadCrumbCustom
           links={[
-            { label: "Home", to: "/" },
-            { label: "Forum", to: "/forum" },
+            { label: "Home", to: "/", global: true },
+            { label: "Forum", to: "/forum", global: true },
           ]}
           pageTitle="Noticeboard"
         />

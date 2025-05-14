@@ -80,9 +80,9 @@ export default function NoticeBoardCreateEdit() {
       <PageHeaderWrapper>
         <BreadCrumbCustom
           links={[
-            { label: "Home", to: "/" },
-            { label: "Forum", to: "/forum" },
-            { label: "Notice Board", to: "/forum" },
+            { label: "Home", to: "/", global: true },
+            { label: "Forum", to: "/forum", global: true },
+            { label: "Notice Board", to: "/", global: false },
           ]}
           pageTitle="Create Noticeboard"
         />
