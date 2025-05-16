@@ -1,6 +1,6 @@
 import { Button, Step, StepButton, Stepper } from "@mui/material";
 import { BreadCrumbCustom } from "../../../components/ui/breadCrumb";
-import { ButtonCustom } from "../../../components/ui/Button";
+import { ButtonCustom } from "../../../components/ui/button";
 import { FormWrapper } from "../../../components/ui/wrapper/form";
 import { PageHeaderWrapper } from "../../../components/ui/wrapper/pageHeader";
 import { useState } from "react";
@@ -39,8 +39,8 @@ export default function NoticeBoardCreateEdit() {
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed,
-        // find the first step that has been completed
-        steps.findIndex((step, i) => !(i in completed))
+          // find the first step that has been completed
+          steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
     setActiveStep(newActiveStep);
   };

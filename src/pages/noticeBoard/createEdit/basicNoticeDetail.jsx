@@ -16,6 +16,7 @@ import { useState } from "react";
 export default function BasicNoticeDetail() {
   const [template, setTemplate] = useState("");
 
+  
   const handleChange = (event) => {
     setTemplate(event.target.value);
   };
