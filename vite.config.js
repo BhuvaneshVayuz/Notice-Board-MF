@@ -17,13 +17,34 @@ export default defineConfig(({ mode }) => {
         formats: ['umd'],
       },
       rollupOptions: {
-        external: isProdBuild ? ['react', 'react-dom', 'tailwindcss', '@mui/material'] : [],
+        external: isProdBuild ? [
+          "react",
+          "react-dom",
+          "@mui/material",
+          "@mui/icons-material",
+          "@emotion/react",
+          "@emotion/styled",
+          "react-router-dom",
+          "@mui/material/styles",
+          "mui-tiptap",
+          "@tiptap/starter-kit",
+          "@mui/x-date-pickers",
+          "@mui/x-date-pickers/AdapterDateFns"
+        ] : [],
         output: {
           globals: {
-            react: 'React',
-            'react-dom': 'ReactDOM',
-            'tailwindcss': 'tailwindcss',
-            '@mui/material': 'MaterialUI',
+            react: "React",
+            "react-dom": "ReactDOM",
+            "@mui/material": "MaterialUI",
+            "@mui/material/styles": "StylesMUI",
+            "@mui/icons-material": "MuiIcons",
+            "@emotion/react": "EmotionReact",
+            "react-router-dom": "ReactRouterDOM",
+            "@emotion/styled": "EmotionStyled",
+            "mui-tiptap": "TiptapMUI",
+            "@tiptap/starter-kit": "TiptapStarterMUI",
+            "@mui/x-date-pickers": "XDatePickerMUI",
+            "@mui/x-date-pickers/AdapterDateFns": "XDatePickerAdapterMUI"
           },
         },
       },
@@ -34,7 +55,20 @@ export default defineConfig(({ mode }) => {
       outDir: 'dist',
     },
     optimizeDeps: {
-      exclude: isProdBuild ? ['react', 'react-dom', 'tailwindcss', '@mui/material'] : [],
+      exclude: isProdBuild ? [
+        "react",
+        "react-dom",
+        "@mui/material",
+        "@mui/icons-material",
+        "@emotion/react",
+        "@emotion/styled",
+        "react-router-dom",
+        "@mui/material/styles",
+        "mui-tiptap",
+        "@tiptap/starter-kit",
+        "@mui/x-date-pickers",
+        "@mui/x-date-pickers/AdapterDateFns"
+      ] : [],
     },
   };
 });

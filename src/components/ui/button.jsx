@@ -1,6 +1,6 @@
 // ButtonCustom.js
 import React, { forwardRef } from "react";
-import Button from "@mui/material/Button";
+import { Button } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 /**

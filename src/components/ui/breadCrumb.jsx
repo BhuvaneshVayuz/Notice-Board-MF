@@ -1,4 +1,4 @@
-import { Box, Breadcrumbs, Typography } from "@mui/material";
+import { Breadcrumbs, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 
 export const BreadCrumbCustom = ({ links = [], pageTitle }) => {
@@ -6,7 +6,8 @@ export const BreadCrumbCustom = ({ links = [], pageTitle }) => {
 
   const navigateGlobal = window.navigateGlobal
   return (
-    <Box>
+    <>
+      {/* <Box> */}
       <Breadcrumbs aria-label="breadcrumb">
         {links.map(({ label, to, global }, index) => (
           <>
@@ -25,7 +26,7 @@ export const BreadCrumbCustom = ({ links = [], pageTitle }) => {
             style={{ textDecoration: "none", color: "inherit" }}
             >
             {label}
-          </Link> */}
+            </Link> */}
           </>
         ))}
         <Typography sx={{ color: "text.primary" }}>{pageTitle}</Typography>
@@ -33,6 +34,7 @@ export const BreadCrumbCustom = ({ links = [], pageTitle }) => {
       <Typography fontSize={24} sx={{ color: "text.primary" }}>
         {pageTitle}
       </Typography>
-    </Box>
+      {/* </Box> */}
+    </>
   );
 };

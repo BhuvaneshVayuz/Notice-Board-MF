@@ -8,7 +8,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import { InsertDriveFile } from "@mui/icons-material";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 export const NoticeCard = ({ data }) => {
   return (

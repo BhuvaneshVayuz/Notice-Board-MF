@@ -31,6 +31,7 @@ export default function NoticeBoardListing() {
           ]}
           pageTitle="Noticeboard"
         />
+
         <Box className="flex gap-2">
           <Button
             LinkComponent={RouterLink}

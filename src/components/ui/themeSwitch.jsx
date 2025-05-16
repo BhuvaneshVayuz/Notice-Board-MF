@@ -11,7 +11,7 @@ import {
   RadioGroup,
   Tooltip,
 } from "@mui/material";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import { SettingsOutlinedIcon } from "@mui/icons-material";
 
 export const CustomThemeSwitcherComp = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);

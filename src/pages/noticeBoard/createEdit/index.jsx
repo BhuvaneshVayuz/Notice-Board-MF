@@ -4,7 +4,7 @@ import { ButtonCustom } from "../../../components/ui/Button";
 import { FormWrapper } from "../../../components/ui/wrapper/form";
 import { PageHeaderWrapper } from "../../../components/ui/wrapper/pageHeader";
 import { useState } from "react";
-import { Outlet, useNavigate } from "react-router";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export default function NoticeBoardCreateEdit() {
   const [activeStep, setActiveStep] = useState(0);

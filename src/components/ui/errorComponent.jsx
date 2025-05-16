@@ -1,5 +1,5 @@
 import { Link, useRouteError } from "react-router-dom";
-import ReportProblemOutlinedIcon from "@mui/icons-material/ReportProblemOutlined";
+import { ReportProblemOutlinedIcon } from "@mui/icons-material";
 
 export const ErrorComponent = ({ containerClassName, imageClassName }) => {
   const error = useRouteError();

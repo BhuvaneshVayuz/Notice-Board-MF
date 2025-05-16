@@ -10,14 +10,15 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import ViewModuleIcon from "@mui/icons-material/ViewModule";
-import ViewListIcon from "@mui/icons-material/ViewList";
-import TuneIcon from "@mui/icons-material/Tune";
+import { Tune as TuneIcon, Search as SearchIcon, ViewModule as ViewModuleIcon, ViewList as ViewListIcon } from "@mui/icons-material";
+
 import { useNavigate } from "react-router-dom";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import {
+  DatePicker,
+  LocalizationProvider
+} from "@mui/x-date-pickers";
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+
 
 const stats = [
   { label: "Current Notices", count: 20, link: "/current-notices" },
