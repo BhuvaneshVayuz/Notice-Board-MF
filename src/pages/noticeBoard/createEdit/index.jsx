@@ -39,8 +39,8 @@ export default function NoticeBoardCreateEdit() {
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed,
-          // find the first step that has been completed
-          steps.findIndex((step, i) => !(i in completed))
+        // find the first step that has been completed
+        steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
     setActiveStep(newActiveStep);
   };
@@ -80,9 +80,9 @@ export default function NoticeBoardCreateEdit() {
       <PageHeaderWrapper>
         <BreadCrumbCustom
           links={[
-            { label: "Home", to: "/", global: true },
-            { label: "Forum", to: "/forum", global: true },
-            { label: "Notice Board", to: "/", global: false },
+            { label: "Home", to: "/" },
+            { label: "Forum", to: "/forum" },
+            { label: "Notice Board", to: "/forum/notice-board" },
           ]}
           pageTitle="Create Noticeboard"
         />
