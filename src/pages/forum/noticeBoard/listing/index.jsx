@@ -1,16 +1,9 @@
-import { BreadCrumbCustom } from "../../../components/ui/breadCrumb";
-
-import { PageHeaderWrapper } from "../../../components/ui/wrapper/pageHeader";
+import { BreadCrumbCustom } from "../../../../components/ui/breadCrumb";
+import { PageHeaderWrapper } from "../../../../components/ui/wrapper/pageHeader";
 import { NoticeCard } from "./noticeCard";
-import {
-  Link as RouterLink,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { Box, Button } from "@mui/material";
 import { NoticeHeader } from "./noticeHeader";
-import { useEffect, useMemo, useRef } from "react";
-import MicrofrontendLoader from "../../../components/ui/MFloader/MicroFrontendLoader";
 
 const dummyData = Array.from({ length: 10 }, (_, i) => ({
   title: `Unapproved Renovation Activity – Immediate Attention`,
@@ -27,40 +20,8 @@ const dummyData = Array.from({ length: 10 }, (_, i) => ({
 }));
 
 export default function NoticeBoardListing() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
-
-  console.log("searchParams", searchParams);
-
-  const tableRef = useRef(null);
-
-  const staticProps = useMemo(
-    () => ({
-      navigate,
-      searchParams,
-      setSearchParams,
-    }),
-    [navigate, searchParams, setSearchParams]
-  );
-
-  useEffect(() => {
-    if (tableRef.current?.updateProps) {
-      tableRef.current.updateProps(staticProps); // ✅ sending plain functions
-    }
-  }, [staticProps]);
-
   return (
     <>
-      {/* <MicrofrontendLoader
-        ref={tableRef}
-        scriptUrl={
-          "https://reusable-table-vert.vercel.app/reusableTable-bundle.js"
-        }
-        // scriptUrl={"http://localhost:55475/signin-bundle.js"}
-        mountDivId="reusableTable"
-        globalVarName="reusableTable"
-        propsToPass={staticProps} // don't pass location here
-      /> */}
       <PageHeaderWrapper>
         <BreadCrumbCustom
           links={[
@@ -69,11 +30,10 @@ export default function NoticeBoardListing() {
           ]}
           pageTitle="Noticeboard"
         />
-
         <Box className="flex gap-2">
           <Button
             LinkComponent={RouterLink}
-            to={"manage-template"}
+            to={"templates"}
             variant="outlined"
           >
             Manage Templates

@@ -1,41 +1,96 @@
-import { Routes, Route } from 'react-router-dom';
-import NoticeBoardListing from './pages/noticeBoard/listing';
-import NoticeBoardCreateEdit from './pages/noticeBoard/createEdit';
-import BasicNoticeDetail from './pages/noticeBoard/createEdit/basicNoticeDetail';
-import NoticeContent from './pages/noticeBoard/createEdit/noticeContent';
-import NotificationsAndPermissions from './pages/noticeBoard/createEdit/notificationsAndPermissions';
-import NoticeBoardPreview from './pages/noticeBoard/createEdit/preview';
-import NoticeBoardDetail from './pages/noticeBoard/detail';
-
-
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import NoticeBoardListing from "./pages/forum/noticeBoard/listing";
+import NoticeBoardCreateEdit from "./pages/forum/noticeBoard/createEdit";
+import BasicNoticeDetail from "./pages/forum/noticeBoard/createEdit/basicNoticeDetail";
+import NoticeContent from "./pages/forum/noticeBoard/createEdit/noticeContent";
+import NotificationsAndPermissions from "./pages/forum/noticeBoard/createEdit/notificationsAndPermissions";
+import NoticeBoardPreview from "./pages/forum/noticeBoard/createEdit/preview";
+import NoticeBoardDetail from "./pages/forum/noticeBoard/detail";
+import ReplyOnNotice from "./pages/forum/noticeBoard/replyOnNotice";
+import TemplateListing from "./pages/forum/noticeBoard/templateListing";
+import AddTemplate from "./pages/forum/noticeBoard/addTemplate";
 
 const App = () => {
+  let MicrofrontendLoader = window.MicrofrontendLoader;
 
-  let MicrofrontendLoader = window.MicrofrontendLoader
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <NoticeBoardListing />,
+      index: true,
+    },
+    {
+      path: "sing",
+      element: (
+        <>
+          <MicrofrontendLoader
+            scriptUrl={"http://localhost:3003/reusableTable-bundle.js"}
+            mountDivId="reusableTable"
+            globalVarName="reusableTable"
+          />
+        </>
+      ),
+    },
+    {
+      index: true,
+      element: <NoticeBoardListing />,
+    },
+    {
+      path: "listing",
+      element: <NoticeBoardListing />,
+    },
 
+    {
+      path: "create",
+      element: <NoticeBoardCreateEdit />,
+      children: [
+        {
+          index: true,
+          element: <BasicNoticeDetail />,
+        },
+        {
+          path: "notice-content",
+          element: <NoticeContent />,
+        },
+        {
+          path: "notifications-and-permissions",
+          element: <NotificationsAndPermissions />,
+        },
+      ],
+    },
+    {
+      path: "preview",
+      element: <NoticeBoardPreview />,
+    },
+    {
+      path: "detail",
+      element: <NoticeBoardDetail />,
+    },
+    {
+      path: "reply-on-notice",
+      element: <ReplyOnNotice />,
+    },
+    {
+      path: "edit-expiry-date",
+      element: <NoticeBoardDetail />,
+    },
+    {
+      path: "templates",
+      element: <Outlet />,
+      children: [
+        {
+          index: true,
+          element: <TemplateListing />,
+        },
+        {
+          path: "create",
+          element: <AddTemplate />,
+        },
+      ],
+    },
+  ]);
 
-
-  return (
-    <Routes>
-      <Route index element={<NoticeBoardListing />} />
-      <Route path="sing" element={<>
-        <MicrofrontendLoader
-          // scriptUrl={"https://sing-in-mf.vercel.app/signin-bundle.js"}
-          scriptUrl={"http://localhost:3003/reusableTable-bundle.js"}
-          mountDivId="reusableTable"
-          globalVarName="reusableTable"
-        />
-      </>} />
-      <Route path="listing" element={<NoticeBoardListing />} />
-      <Route path="create" element={<NoticeBoardCreateEdit />}>
-        <Route index element={<BasicNoticeDetail />} />
-        <Route path="notice-content" element={<NoticeContent />} />
-        <Route path="notifications-and-permissions" element={<NotificationsAndPermissions />} />
-      </Route>
-      <Route path="preview" element={<NoticeBoardPreview />} />
-      <Route path="detail" element={<NoticeBoardDetail />} />
-    </Routes>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
