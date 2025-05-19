@@ -9,8 +9,9 @@ import {
 } from "react-router-dom";
 import { Box, Button } from "@mui/material";
 import { NoticeHeader } from "./noticeHeader";
-import { useEffect, useMemo, useRef } from "react";
+import { useContext, useEffect, useMemo, useRef } from "react";
 import MicrofrontendLoader from "../../../components/ui/MFloader/MicroFrontendLoader";
+import { context } from "../../../context/context";
 
 const dummyData = Array.from({ length: 10 }, (_, i) => ({
   title: `Unapproved Renovation Activity – Immediate Attention`,
@@ -27,12 +28,18 @@ const dummyData = Array.from({ length: 10 }, (_, i) => ({
 }));
 
 export default function NoticeBoardListing() {
+  const { loading, getUsers } = useContext(context);
+  console.log(loading, "loading");
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
   console.log("searchParams", searchParams);
 
   const tableRef = useRef(null);
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   const staticProps = useMemo(
     () => ({
