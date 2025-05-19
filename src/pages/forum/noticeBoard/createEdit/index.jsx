@@ -1,10 +1,10 @@
 import { Button, Step, StepButton, Stepper } from "@mui/material";
-import { BreadCrumbCustom } from "../../../components/ui/breadCrumb";
-import { ButtonCustom } from "../../../components/ui/button";
-import { FormWrapper } from "../../../components/ui/wrapper/form";
-import { PageHeaderWrapper } from "../../../components/ui/wrapper/pageHeader";
+import { BreadCrumbCustom } from "../../../../components/ui/breadCrumb";
+import { ButtonCustom } from "../../../../components/ui/Button";
+import { FormWrapper } from "../../../../components/ui/wrapper/form";
+import { PageHeaderWrapper } from "../../../../components/ui/wrapper/pageHeader";
 import { useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router";
 
 export default function NoticeBoardCreateEdit() {
   const [activeStep, setActiveStep] = useState(0);
@@ -16,7 +16,7 @@ export default function NoticeBoardCreateEdit() {
     "Basic Notice Detail",
     "Notice Content",
     "Notifications & Permissions",
-    "Preview",
+    // "Preview",
   ];
 
   const totalSteps = () => {
@@ -39,8 +39,8 @@ export default function NoticeBoardCreateEdit() {
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed,
-        // find the first step that has been completed
-        steps.findIndex((step, i) => !(i in completed))
+          // find the first step that has been completed
+          steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
     setActiveStep(newActiveStep);
   };
@@ -75,6 +75,10 @@ export default function NoticeBoardCreateEdit() {
     setCompleted({});
   };
 
+  const redirectToDetail=()=>{
+    navigate('/forum/notice-board/detail')
+  }
+
   return (
     <>
       <PageHeaderWrapper>
@@ -82,7 +86,7 @@ export default function NoticeBoardCreateEdit() {
           links={[
             { label: "Home", to: "/" },
             { label: "Forum", to: "/forum" },
-            { label: "Notice Board", to: "/forum/notice-board" },
+            { label: "Notice Board", to: "/forum" },
           ]}
           pageTitle="Create Noticeboard"
         />
@@ -91,7 +95,6 @@ export default function NoticeBoardCreateEdit() {
         </ButtonCustom>
       </PageHeaderWrapper>
 
-      <FormWrapper className="flex flex-col gap-8">
         <Stepper nonLinear activeStep={activeStep}>
           {steps.map((label, index) => (
             <Step key={label} completed={completed[index]}>
@@ -101,10 +104,11 @@ export default function NoticeBoardCreateEdit() {
             </Step>
           ))}
         </Stepper>
+      <FormWrapper className="flex flex-col gap-8 mt-4">
         <Outlet />
         <div className="flex justify-end gap-2">
           <Button variant="outlined">Save as draft</Button>
-          <Button variant="contained">Next</Button>
+          <Button variant="contained" onClick={redirectToDetail}>Next</Button>
         </div>
       </FormWrapper>
     </>

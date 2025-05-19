@@ -10,15 +10,14 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
-import { Tune as TuneIcon, Search as SearchIcon, ViewModule as ViewModuleIcon, ViewList as ViewListIcon } from "@mui/icons-material";
-
+import SearchIcon from "@mui/icons-material/Search";
+import ViewModuleIcon from "@mui/icons-material/ViewModule";
+import ViewListIcon from "@mui/icons-material/ViewList";
+import TuneIcon from "@mui/icons-material/Tune";
 import { useNavigate } from "react-router-dom";
-import {
-  DatePicker,
-  LocalizationProvider
-} from "@mui/x-date-pickers";
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 const stats = [
   { label: "Current Notices", count: 20, link: "/current-notices" },
@@ -40,7 +39,7 @@ export const NoticeHeader = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+ console.log(anchorEl, "state from header");
   return (
     <div className="pb-4 flex items-center justify-between flex-wrap gap-4">
       {/* Analytics Cards */}

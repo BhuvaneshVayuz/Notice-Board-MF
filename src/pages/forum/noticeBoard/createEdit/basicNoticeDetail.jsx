@@ -16,7 +16,6 @@ import { useState } from "react";
 export default function BasicNoticeDetail() {
   const [template, setTemplate] = useState("");
 
-  
   const handleChange = (event) => {
     setTemplate(event.target.value);
   };
@@ -57,7 +56,9 @@ export default function BasicNoticeDetail() {
           they login into their accounts.
         </FormHelperText>
       </FormControl>
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+        <div>
+
         <FormControl fullWidth>
           <InputLabel id="select-template-label">Expires By</InputLabel>
           <Select
@@ -72,6 +73,9 @@ export default function BasicNoticeDetail() {
             <MenuItem value={30}>Thirty</MenuItem>
           </Select>
         </FormControl>
+        </div>
+        <div className="px-8">
+
         <FormControl fullWidth className="!space-y-2">
           <Typography>Upload Attachment (if any)</Typography>
           <Button
@@ -88,6 +92,7 @@ export default function BasicNoticeDetail() {
             gif type of files allowed)
           </FormHelperText>
         </FormControl>
+        </div>
       </div>
     </>
   );

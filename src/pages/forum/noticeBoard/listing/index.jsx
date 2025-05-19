@@ -1,12 +1,7 @@
-import { BreadCrumbCustom } from "../../../components/ui/breadCrumb";
-
-import { PageHeaderWrapper } from "../../../components/ui/wrapper/pageHeader";
+import { BreadCrumbCustom } from "../../../../components/ui/breadCrumb";
+import { PageHeaderWrapper } from "../../../../components/ui/wrapper/pageHeader";
 import { NoticeCard } from "./noticeCard";
-import {
-  Link as RouterLink,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { Box, Button } from "@mui/material";
 import { NoticeHeader } from "./noticeHeader";
 import { useContext, useEffect, useMemo, useRef } from "react";
@@ -58,16 +53,6 @@ export default function NoticeBoardListing() {
 
   return (
     <>
-      {/* <MicrofrontendLoader
-        ref={tableRef}
-        scriptUrl={
-          "https://reusable-table-vert.vercel.app/reusableTable-bundle.js"
-        }
-        // scriptUrl={"http://localhost:55475/signin-bundle.js"}
-        mountDivId="reusableTable"
-        globalVarName="reusableTable"
-        propsToPass={staticProps} // don't pass location here
-      /> */}
       <PageHeaderWrapper>
         <BreadCrumbCustom
           links={[
@@ -76,11 +61,10 @@ export default function NoticeBoardListing() {
           ]}
           pageTitle="Noticeboard"
         />
-
         <Box className="flex gap-2">
           <Button
             LinkComponent={RouterLink}
-            to={"manage-template"}
+            to={"templates"}
             variant="outlined"
           >
             Manage Templates
