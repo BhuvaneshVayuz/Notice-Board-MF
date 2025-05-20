@@ -9,6 +9,7 @@ import NoticeBoardDetail from "./pages/forum/noticeBoard/detail";
 import ReplyOnNotice from "./pages/forum/noticeBoard/replyOnNotice";
 import TemplateListing from "./pages/forum/noticeBoard/templateListing";
 import AddTemplate from "./pages/forum/noticeBoard/addTemplate";
+import { ContextProvider } from "./context/context";
 
 const App = () => {
   let MicrofrontendLoader = window.MicrofrontendLoader;
@@ -90,7 +91,11 @@ const App = () => {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <ContextProvider>
+      <RouterProvider router={router} />
+    </ContextProvider>
+  );
 };
 
 export default App;

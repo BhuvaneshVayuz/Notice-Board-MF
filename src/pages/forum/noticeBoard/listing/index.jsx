@@ -1,12 +1,16 @@
 import { BreadCrumbCustom } from "../../../../components/ui/breadCrumb";
 import { PageHeaderWrapper } from "../../../../components/ui/wrapper/pageHeader";
 import { NoticeCard } from "./noticeCard";
-import { Link as RouterLink } from "react-router-dom";
+import {
+  Link as RouterLink,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import { Box, Button } from "@mui/material";
 import { NoticeHeader } from "./noticeHeader";
 import { useContext, useEffect, useMemo, useRef } from "react";
-import MicrofrontendLoader from "../../../components/ui/MFloader/MicroFrontendLoader";
-import { context } from "../../../context/context";
+import { context } from "../../../../context/context";
+// import MicrofrontendLoader from "../../../components/ui/MFloader/MicroFrontendLoader";
 
 const dummyData = Array.from({ length: 10 }, (_, i) => ({
   title: `Unapproved Renovation Activity – Immediate Attention`,
